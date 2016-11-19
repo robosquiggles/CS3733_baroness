@@ -1,14 +1,9 @@
 package rmputnam;
 
-import java.awt.event.MouseAdapter;
-
-import heineman.Klondike;
-import heineman.klondike.DealCardMove;
 import ks.common.controller.SolitaireReleasedAdapter;
 import ks.common.model.Column;
 import ks.common.model.Deck;
 import ks.common.model.Move;
-import ks.common.model.Pile;
 
 public class BaronessDeckController extends SolitaireReleasedAdapter {
 
@@ -28,7 +23,7 @@ public class BaronessDeckController extends SolitaireReleasedAdapter {
 	 * Coordinate reaction to the beginning of a Drag Event. In this case,
 	 * no drag is ever achieved, and we simply deal upon the pres.
 	 */
-	public void mousePressed (java.awt.event.MouseEvent me) {
+	public void mouseClicked (java.awt.event.MouseEvent me) {
 
 		// Attempt CardFromDeckToEmptyColumnMove
 		for (int i = 0; i <= 4; i++) {

@@ -1,7 +1,5 @@
 package rmputnam;
 
-import heineman.klondike.BuildablePileController;
-import heineman.klondike.KlondikeDeckController;
 import ks.client.gamefactory.GameWindow;
 import ks.common.controller.SolitaireMouseMotionAdapter;
 import ks.common.games.Solitaire;
@@ -111,7 +109,7 @@ public class Baroness extends Solitaire {
 		
 		// Initialize Controllers for DeckView
 		for (int i = 0; i <= 4; i++) {
-			columnViews[i].setMouseAdapter (new BaronessColumnsController (this, columns[i], discardPile, deck));
+			columnViews[i].setMouseAdapter (new BaronessColumnsController (this, columns[i], columnViews[i], discardPile, deck));
 			columnViews[i].setMouseMotionAdapter (new SolitaireMouseMotionAdapter (this));
 			columnViews[i].setUndoAdapter (new SolitaireUndoAdapter(this));
 		}
