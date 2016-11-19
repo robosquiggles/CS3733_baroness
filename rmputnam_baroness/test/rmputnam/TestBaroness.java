@@ -47,4 +47,21 @@ public class TestBaroness extends TestCase {
 		assertEquals(0, baroness.getNumLeft().getValue());
 		assertFalse(dnrm.valid(baroness));
 	}
+	
+	public void testThirteenFromKingMove () {
+		Baroness baroness = new Baroness();
+		GameWindow gw = Main.generateWindow(baroness, Deck.OrderByRank);
+		
+		ThirteenFromKingMove tfkm = new ThirteenFromKingMove(baroness.columns[0],baroness.discardPile);
+		
+		assertTrue(tfkm.valid(baroness));
+		
+		tfkm.doMove(baroness);
+		
+		assertEquals(2, baroness.getScoreValue());
+		
+		tfkm.undo(baroness);
+		
+		assertEquals(0, baroness.getScoreValue());
+	}
 }

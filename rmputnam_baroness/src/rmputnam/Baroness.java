@@ -109,11 +109,12 @@ public class Baroness extends Solitaire {
 		deckView.setMouseMotionAdapter (new SolitaireMouseMotionAdapter(this));
 		deckView.setUndoAdapter (new SolitaireUndoAdapter(this));
 		
-//		for (int i = 1; i <= 7; i++) {
-//			columnViews[i].setMouseAdapter (new BaronessColumnsController (this, columnViews[i]));
-//			columnViews[i].setMouseMotionAdapter (new SolitaireMouseMotionAdapter (this));
-//			columnViews[i].setUndoAdapter (new SolitaireUndoAdapter(this));
-//		}
+		// Initialize Controllers for DeckView
+		for (int i = 0; i <= 4; i++) {
+			columnViews[i].setMouseAdapter (new BaronessColumnsController (this, columns[i], discardPile, deck));
+			columnViews[i].setMouseMotionAdapter (new SolitaireMouseMotionAdapter (this));
+			columnViews[i].setUndoAdapter (new SolitaireUndoAdapter(this));
+		}
 		
 	}
 	

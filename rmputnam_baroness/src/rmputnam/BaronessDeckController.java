@@ -30,10 +30,20 @@ public class BaronessDeckController extends SolitaireReleasedAdapter {
 	 */
 	public void mousePressed (java.awt.event.MouseEvent me) {
 
-		// Attempting a DealFourCardMove
-		Move m = new DealNextRoundMove (deck, columns);
-		if (m.doMove(theGame)) {
-			theGame.pushMove (m);     // Successful DealFour Move
+		// Attempt CardFromDeckToEmptyColumnMove
+		for (int i = 0; i <= 4; i++) {
+			Move mD2C = new CardFromDeckToEmptyColumnMove(deck, columns[i]);
+			if (mD2C.doMove(theGame)) {
+				theGame.pushMove (mD2C);     // Successful DealFour Move
+				theGame.refreshWidgets(); // refresh updated widgets.
+				return;
+			}
+		}
+		
+		// Attempt DealNextRoundMove
+		Move mNR = new DealNextRoundMove (deck, columns);
+		if (mNR.doMove(theGame)) {
+			theGame.pushMove (mNR);     // Successful DealFour Move
 			theGame.refreshWidgets(); // refresh updated widgets.
 		}
 	}
