@@ -2,6 +2,7 @@ package rmputnam;
 
 import ks.client.gamefactory.GameWindow;
 import ks.common.controller.SolitaireMouseMotionAdapter;
+import ks.common.controller.SolitaireReleasedAdapter;
 import ks.common.games.Solitaire;
 import ks.common.games.SolitaireUndoAdapter;
 import ks.common.model.Card;
@@ -36,8 +37,10 @@ public class Baroness extends Solitaire {
 
 	@Override
 	public boolean hasWon() {
-		// TODO Auto-generated method stub
-		return false;
+		for (int i = 0; i <= 4; i ++) {
+			if (!columns[i].empty()) return false;
+		}
+		return deck.empty();
 	}
 
 	@Override
@@ -78,26 +81,27 @@ public class Baroness extends Solitaire {
 		CardImages ci = getCardImages();
 		
 		deckView = new DeckView (deck);
-		deckView.setBounds (20,20, ci.getWidth(), ci.getHeight());
+		deckView.setBounds (20, 30, ci.getWidth(), ci.getHeight());
 		container.addWidget (deckView);
 		
 		for (int colNum = 0; colNum <=4; colNum++) {
 			columnViews[colNum] = new ColumnView(columns[colNum]);
-			columnViews[colNum].setBounds (20*(colNum+2) + (colNum+1)*ci.getWidth(), 20, ci.getWidth(), 13*ci.getHeight());
+			columnViews[colNum].setBounds (20*(colNum+2) + (colNum+1)*ci.getWidth(), 30, ci.getWidth(), 13*ci.getHeight());
 			container.addWidget (columnViews[colNum]);
 		}
 		
 		discardPileView = new PileView (discardPile);
-		discardPileView.setBounds (20*7 + 6*ci.getWidth(), 20, ci.getWidth(), ci.getHeight());
+		discardPileView.setBounds (20*7 + 6*ci.getWidth() + 30, 30, ci.getWidth(), ci.getHeight());
 		container.addWidget (discardPileView);
 		
 		scoreView = new IntegerView (getScore());
-		scoreView.setBounds (20*7+7*ci.getWidth(), 0, 160, 70);
+		scoreView.setFontSize (24);
+		scoreView.setBounds (20*6+6*ci.getWidth(), 0, 30, 70);
 		container.addWidget (scoreView);
 
 		numLeftView = new IntegerView (getNumLeft());
 		numLeftView.setFontSize (14);
-		numLeftView.setBounds (20*7+7*ci.getWidth(), 70, 160, 70);
+		numLeftView.setBounds (20 + ci.getWidth()/4, 10, ci.getWidth(), 20);
 		container.addWidget (numLeftView);
 	}
 
@@ -113,6 +117,18 @@ public class Baroness extends Solitaire {
 			columnViews[i].setMouseMotionAdapter (new SolitaireMouseMotionAdapter (this));
 			columnViews[i].setUndoAdapter (new SolitaireUndoAdapter(this));
 		}
+		
+		numLeftView.setMouseMotionAdapter (new SolitaireMouseMotionAdapter(this));
+		numLeftView.setMouseAdapter (new SolitaireReleasedAdapter(this));
+		numLeftView.setUndoAdapter (new SolitaireUndoAdapter(this));
+		
+		scoreView.setMouseMotionAdapter (new SolitaireMouseMotionAdapter(this));
+		scoreView.setMouseAdapter (new SolitaireReleasedAdapter(this));
+		scoreView.setUndoAdapter (new SolitaireUndoAdapter(this));
+		
+		discardPileView.setMouseMotionAdapter (new SolitaireMouseMotionAdapter(this));
+		discardPileView.setMouseAdapter (new SolitaireReleasedAdapter(this));
+		discardPileView.setUndoAdapter (new SolitaireUndoAdapter(this));
 		
 	}
 	
