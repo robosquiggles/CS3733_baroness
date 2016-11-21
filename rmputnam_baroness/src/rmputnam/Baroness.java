@@ -59,7 +59,8 @@ public class Baroness extends Solitaire {
 	}
 
 	private void initializeModel(int seed) {
-		//make deck
+		System.out.println(seed);
+	//make deck
 		deck = new Deck("d");
 		deck.create(seed);
 		

@@ -56,7 +56,19 @@ public class DealNextRoundMove extends Move {
 	@Override
 	public boolean valid(Solitaire game) {
 		//validation
-		return (!deck.empty());
+		boolean noEmptyColumns = true;
+		boolean notEnoughCards = true;
+		int totalCards = 0;
+		for (int colNum = 0; colNum <= 4; colNum ++) {
+			if (columns[colNum].empty()) {					//if any column is empty
+				noEmptyColumns =  false;
+			}
+			if (columns[colNum].count() > 1) {
+				notEnoughCards = false;
+			}
+		}
+		
+		return (noEmptyColumns || notEnoughCards);
 	}
 
 }

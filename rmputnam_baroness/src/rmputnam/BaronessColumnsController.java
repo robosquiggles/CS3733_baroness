@@ -34,14 +34,6 @@ public class BaronessColumnsController extends SolitaireReleasedAdapter {
 	
 	public void mousePressed(MouseEvent me) {
 		
-		// Attempt CardFromDeckToEmptyColumnMove
-		Move mD2C = new CardFromDeckToEmptyColumnMove(deck, column);
-		if (mD2C.doMove(theGame)) {
-			theGame.pushMove (mD2C);     // Successful DealFour Move
-			theGame.refreshWidgets(); // refresh updated widgets.
-			return;
-		}
-		
 		// Attempt ThirteenFromKingMove
 		Move m = new ThirteenFromKingMove (column, discardPile);
 		if (m.doMove(theGame)) {
@@ -102,7 +94,6 @@ public class BaronessColumnsController extends SolitaireReleasedAdapter {
 		Column fromColumn = (Column) fromWidget.getModelElement();
 		
 		//if more crazy stuff?
-		CardView cardView = (CardView) draggingWidget;
 		if (fromColumn == null) {
 			System.err.println ("errors everywheres");
 			c.releaseDraggingObject();			

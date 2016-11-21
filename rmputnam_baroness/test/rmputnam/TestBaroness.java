@@ -54,7 +54,7 @@ public class TestBaroness extends KSTestCase {
 		dnrm.doMove(baroness);
 		assertEquals(0, baroness.deck.count());
 		assertEquals(0, baroness.getNumLeft().getValue());
-		assertFalse(dnrm.valid(baroness));
+		assertTrue(dnrm.valid(baroness));
 	}
 	
 	public void testThirteenFromKingMove () {
