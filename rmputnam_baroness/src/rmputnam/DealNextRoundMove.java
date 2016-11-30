@@ -58,7 +58,6 @@ public class DealNextRoundMove extends Move {
 		//validation
 		boolean noEmptyColumns = true;
 		boolean notEnoughCards = true;
-		int totalCards = 0;
 		for (int colNum = 0; colNum <= 4; colNum ++) {
 			if (columns[colNum].empty()) {					//if any column is empty
 				noEmptyColumns =  false;

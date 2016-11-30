@@ -23,7 +23,7 @@ public class BaronessDeckController extends SolitaireReleasedAdapter {
 	 * Coordinate reaction to the beginning of a Drag Event. In this case,
 	 * no drag is ever achieved, and we simply deal upon the pres.
 	 */
-	public void mouseClicked (java.awt.event.MouseEvent me) {
+	public void mouseReleased (java.awt.event.MouseEvent me) {
 		
 		// Attempt DealNextRoundMove
 		Move mNR = new DealNextRoundMove (deck, columns);

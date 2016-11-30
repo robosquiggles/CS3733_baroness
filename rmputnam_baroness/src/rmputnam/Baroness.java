@@ -59,6 +59,7 @@ public class Baroness extends Solitaire {
 	}
 
 	private void initializeModel(int seed) {
+		System.out.print("seed:");
 		System.out.println(seed);
 	//make deck
 		deck = new Deck("d");
@@ -136,9 +137,11 @@ public class Baroness extends Solitaire {
 	//launch!!
 	public static void main (String []args) {
 		Baroness baroness = new Baroness();
-		GameWindow gw = Main.generateWindow(baroness, Deck.OrderBySuit);
-//		DealNextRoundMove dnrm = new DealNextRoundMove(baroness.deck, baroness.columns);
-//		dnrm.doMove(baroness);
+		GameWindow gw = Main.generateWindow(baroness, 2); 
+		//seed = 2 is winnable (I promise)
+		//hint: before first deal, cards should look like this
+		//   blank blank blank Ace Jack
+		
 	}
 
 }
